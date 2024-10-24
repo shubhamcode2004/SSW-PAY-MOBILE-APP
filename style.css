@@ -94,11 +94,11 @@ body {
 }
 
 #qrcode img {
-    width: 80px;
+    width: 140px;
 }
 
 #qrcode canvas {
-    width: 80px;
+    width: 140px;
 }
 
 .upi-logos {
