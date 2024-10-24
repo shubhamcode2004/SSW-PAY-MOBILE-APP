@@ -1,0 +1,170 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    font-family: 'poppins', sans-serif;
+    background-color: #ffffff;
+    color: #66686C;
+    line-height: 1.6;
+    height: 100vh;
+    padding: 20px;
+}
+
+.outerContainer {
+    display: inline-block;
+    /* flex-wrap: wrap; */
+    /* Allows children to wrap onto new lines */
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    width: 80%;
+    max-width: 250px;
+    margin: 10px 30px 30px 30px;
+    border: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+.QRDiv {
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    /* width: 30%; */
+    min-width: 250px;
+    margin: 10px 30px 30px 30px;
+    border: 1px solid #e7e7e7;
+    align-items: center;
+}
+
+.title {
+    /* font-size: 2em; */
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Style the button */
+.button {
+    width: 100%;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 550;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+/* QR Code styles */
+#qrcode {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#qrcode img {
+    width: 60px;
+}
+
+/* Tooltips
+#qrcode[title]:hover:after {
+    content: attr(title);
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e9661c;
+    color: #fff; 
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+} */
+
+/* Adjustments for the UPI logos */
+.upi-logos {
+    display: flex;
+    justify-content: center;
+
+}
+
+.upi-logos img {
+    max-width: 40px;
+    /* Adjust size as needed */
+    /* border-radius: 50%; Circular logos */
+    /* margin: 10px 15px; */
+}
+
+.secondaryButton {
+    padding: 4px 8px;
+    background: white;
+    border: 1px solid #e7e7e7;
+    margin: 4px 8px;
+    border-radius: 10px;
+    font-size: 8px;
+}
+
+
+/*Focus Color for inputs     */
+button:focus,
+input:focus {
+    outline: none;
+    border: 1px solid #a2a2a2;
+    /* Lighter border */
+}
+
+
+
+/* Targets screens smaller than 600px */
+@media (max-width: 600px) {
+    .outerContainer {
+        flex-direction: column;
+        /* Stacks flex children vertically */
+    }
+
+    .container,
+    .QRDiv {
+        width: 90%;
+        /* Makes children take full width */
+        margin-bottom: 20px;
+        /* Adds space between the stacked elements */
+    }
+}
