@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSW PAYMENT</title>
+  <meta name="description"
+    content="Create a custom UPI payment QR code with any amount in seconds. Fast, mobile-friendly, and privacy-safe UPI QR generator." />
+  <meta name="keywords"
+    content="SSW PAY, UPI QR generator, payment QR, custom amount QR, India payment QR, instant UPI QR" />
+  <meta name="author" content="Shubham Ghanshyam Varma" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f766e" />
+
+  <!-- Mobile Web App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="x-ua-compatible" content="ie=edge" />
+  <meta name="msapplication-TileColor" content="#0f766e" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="image/SSW Logo - PNG.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <section class="content-box" id="inputArea" aria-label="UPI details and amount form">
+      <div class="payee-info">
+        <div class="logo-img">
+        <img src="image/B & W LOGO SSW.png">
+      </div>
+        <div class="title" id="payeeName" aria-label="Payee name"></div>
+        <div class="subtitle" id="upiId" aria-label="UPI ID"></div>
+      </div>
+
+      <input id="amount" type="text" inputmode="decimal" pattern="[0-9]*\.?[0-9]{0,2}" placeholder="Enter amount in INR"
+        autocomplete="off" aria-label="Enter payment amount in INR">
+    </section>
+
+    <button class="generate-btn" id="generateBtn" aria-label="Accept Payment via UPI">Accept Payment via UPI</button>
+
+    <section class="qr-area" id="qrArea" style="display:none;" aria-live="polite">
+      <div class="qr-box" id="qr"></div>
+      <div class="scan-text">Scan to pay with any UPI app</div>
+      <div class="upi-img">
+        <img src="image/BHIM_UPI.png">
+        <img src="image/GooglePay.png">
+        <img src="image/PhonePe.png">
+        <img src="image/Paytm.png">
+      </div>
+    </section>
+    <br>
+    <button class="back-btn" id="backBtn" style="display:none;" aria-label="Go back and enter new amount">SCAN TO PAY</button>
+  </main>
+
+  <footer>
+    © <span id="year"></span> SSW PAYMENT • SHUBHAM ENTERPRISES
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Auto-update year in footer -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Service Worker Registration for PWA Installation -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+
+    // Install Prompt Handler
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log('PWA can be installed');
+    });
+
+    // Listen for app installation
+    window.addEventListener('appinstalled', () => {
+      console.log('UPI QR Generator installed as PWA');
+      console.log('App installed by user - Analytics can be sent here');
+      deferredPrompt = null;
+    });
+
+    // Listen for app launch from home screen
+    window.addEventListener('load', () => {
+      if (window.navigator.standalone === true) {
+        console.log('Running as installed PWA');
+      }
+    });
+  </script>
+</body>
+
+</html>
